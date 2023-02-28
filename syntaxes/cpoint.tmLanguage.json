@@ -1,0 +1,65 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "Cpoint",
+	"scopeName": "source.cpoint",
+	"patterns": [
+		{
+			"include": "#keywords"
+		},
+		{
+			"include": "#strings"
+		},
+		{
+			"include": "#imports"
+		},
+		{
+			"include": "#numbers"
+		},
+		{
+			"include": "#types"
+		}
+	],
+	"repository": {
+		"keywords": {
+			"patterns": [{
+				"name": "keyword.control.cpoint",
+				"match": "\\b(if|func|for|return|extern|var|goto|label)\\b"
+			}]
+		},
+		"imports": {
+			"patterns": [{
+				"name": "keyword.import.cpoint",
+				"match": "\\b(import|include)\\b"
+			}]
+		},
+		"numbers": {
+			"patterns": [{
+				"name": "constant.numeric.decimal.cpoint",
+				"match": "\\b([1-9]+)\\b"
+			}]
+		},
+		"functions": {
+			"patterns": [{
+				"name": "entity.name.function.cpoint",
+				"match": "\\b(.*(.*)\\b"
+			}]
+		},
+		"types": {
+			"patterns": [{
+				"name": "storage.type.built-in.primitive.cpoint",
+				"match": "\\b(int|float|double|i8|ptr)\\b"
+			}]
+		},
+		"strings": {
+			"name": "string.quoted.double.cpoint",
+			"begin": "\"",
+			"end": "\"",
+			"patterns": [
+				{
+					"name": "string.quoted.double.cpoint",
+					"match": "\\\\."
+				}
+			]
+		}
+	}
+}
