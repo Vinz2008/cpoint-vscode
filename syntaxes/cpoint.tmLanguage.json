@@ -47,7 +47,7 @@
 		"types": {
 			"patterns": [{
 				"name": "storage.type.built-in.primitive.cpoint",
-				"match": "\\b(int|float|double|i8|ptr)\\b"
+				"match": "\\b(int|float|double|i8|i16|i32|i64|ptr|void)\\b"
 			}]
 		},
 		"strings": {
