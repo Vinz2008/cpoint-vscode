@@ -23,7 +23,7 @@
 		"keywords": {
 			"patterns": [{
 				"name": "keyword.control.cpoint",
-				"match": "\\b(if|func|for|return|extern|var|goto|label)\\b"
+				"match": "\\b(if|func|for|return|extern|var|goto|label|struct|while|loop)\\b"
 			}]
 		},
 		"imports": {
@@ -35,19 +35,25 @@
 		"numbers": {
 			"patterns": [{
 				"name": "constant.numeric.decimal.cpoint",
-				"match": "\\b([1-9]+)\\b"
+				"match": "\\b([0-9]+)\\b"
 			}]
 		},
 		"functions": {
 			"patterns": [{
 				"name": "entity.name.function.cpoint",
-				"match": "\\b(.*(.*)\\b"
+				"match": "\\b(\\s*.(*.)\\s)\\b"
 			}]
 		},
 		"types": {
 			"patterns": [{
 				"name": "storage.type.built-in.primitive.cpoint",
-				"match": "\\b(int|float|double|i8|i16|i32|i64|ptr|void)\\b"
+				"match": "\\b(int|float|double|i8|i16|i32|i64|ptr|void|addr)\\b"
+			}]
+		},
+		"operators": {
+			"patterns": [{
+				"name": "keyword.operator.cpoint",
+				"match": "\\b(\\+|-|*|/|=)\\b"
 			}]
 		},
 		"strings": {
