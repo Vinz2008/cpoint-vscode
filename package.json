@@ -10,6 +10,20 @@
     "Programming Languages"
   ],
   "contributes": {
+    "taskDefinitions": [
+      {
+        "type": "cpoint",
+        "required": [
+          "task"
+        ],
+        "properties": {
+          "task": {
+            "type": "string",
+            "description": "The Rake task to customize"
+          }
+        }
+      }
+    ],
     "languages": [
       {
         "id": "cpoint",
@@ -44,7 +58,7 @@
     "@typescript-eslint/eslint-plugin": "^5.48.2",
     "@typescript-eslint/parser": "^5.48.2",
     "eslint": "^8.32.0",
-    "typescript": "^4.9.4",
+    "typescript": "^4.9.5",
     "vsce": "^2.15.0"
   }
 }
