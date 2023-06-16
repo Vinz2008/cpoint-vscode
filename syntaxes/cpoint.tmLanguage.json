@@ -20,6 +20,9 @@
 		},
 		{
 			"include": "#functions"
+		},
+		{
+			"include": "#operators"
 		}
 	],
 	"repository": {
@@ -58,8 +61,14 @@
 		"operators": {
 			"patterns": [{
 				"name": "keyword.operator.cpoint",
-				"match": "\\b(\\+|-|*|/|=)\\b"
-			}]
+				"match": "\\*|/|-|\\+"
+			}, 
+			{
+				"name": "keyword.operator.assignment.cpoint",
+				"match": "="
+			}
+		
+			]
 		},
 		"strings": {
 			"name": "string.quoted.double.cpoint",
