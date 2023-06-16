@@ -23,6 +23,12 @@
 		},
 		{
 			"include": "#operators"
+		},
+		{
+			"include": "#modules_namespaces"
+		},
+		{
+			"include": "#std_in_imports"
 		}
 	],
 	"repository": {
@@ -48,7 +54,7 @@
 			"patterns": [
 			{
 				"name": "entity.name.function.cpoint",
-				"match": "(?<= )(\\w|\\d)*(?=\\()"
+				"match": "(?<= |::)(\\w|\\d)*(?=\\()"
 			}
 			]
 		},
@@ -66,18 +72,32 @@
 			{
 				"name": "keyword.operator.assignment.cpoint",
 				"match": "="
+			},
+			{
+				"name": "keyword.operator.namespace.cpoint",
+				"match": "::"
 			}
 		
 			]
 		},
+		"modules_namespaces": {
+			"patterns": [{
+				"name": "entity.name.namespace.cpoint",
+				"match": "(\\w|\\d)*(?=::)"
+			}]
+		},
+		"std_in_imports":{
+			"patterns": [{
+				"name": "keyword.control.cpoint",
+				"match": "@std"
+			}]
+		},
 		"strings": {
 			"name": "string.quoted.double.cpoint",
-			"begin": "\"",
-			"end": "\"",
 			"patterns": [
 				{
 					"name": "string.quoted.double.cpoint",
-					"match": "\\\\."
+					"match": "(\\s*)\".*\""
 				}
 			]
 		}
