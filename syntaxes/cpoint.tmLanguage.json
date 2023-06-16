@@ -17,6 +17,9 @@
 		},
 		{
 			"include": "#types"
+		},
+		{
+			"include": "#functions"
 		}
 	],
 	"repository": {
@@ -38,11 +41,13 @@
 				"match": "\\b([0-9]+)\\b"
 			}]
 		},
-		"functions": {
-			"patterns": [{
+		"functions" : {
+			"patterns": [
+			{
 				"name": "entity.name.function.cpoint",
-				"match": "\\b(\\s*.(*.)\\s)\\b"
-			}]
+				"match": "(?<= )(\\w|\\d)*(?=\\()"
+			}
+			]
 		},
 		"types": {
 			"patterns": [{
