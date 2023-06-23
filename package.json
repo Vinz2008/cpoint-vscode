@@ -2,7 +2,7 @@
   "name": "cpoint-vscode",
   "displayName": "cpoint-vscode",
   "description": "Cpoint support for vscode",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "publisher": "vincentbidarddelanoe",
   "engines": {
     "vscode": "^1.74.0"
