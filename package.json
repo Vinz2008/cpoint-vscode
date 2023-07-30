@@ -10,6 +10,7 @@
   "categories": [
     "Programming Languages"
   ],
+  "repository": "https://github.com/Vinz2008/cpoint-vscode",
   "contributes": {
     "taskDefinitions": [
       {
@@ -46,8 +47,18 @@
       }
     ]
   },
+  "main": "./out/extension",
+  "activationEvents": [
+    "workspaceContains:*/build.toml",
+    "workspaceContains:*/*.cpoint",
+    "onLanguage:cpoint"
+],
   "scripts": {
-    "vscode:prepublish": "npm run compile",
+    "vscode:prepublish": "npm run esbuild-base -- --minify",
+    "esbuild-base": "esbuild ./client/src/extension.ts ./client/src/tasks.ts --bundle --external:vscode --format=cjs --platform=node --outdir=out",
+    "esbuild": "npm run esbuild-base -- --sourcemap",
+    "esbuild-watch": "npm run esbuild-base -- --sourcemap --watch",
+    "test-compile": "tsc -p ./",
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./",
     "lint": "eslint . --ext .ts,.tsx",
@@ -58,8 +69,12 @@
     "@types/vscode": "^1.74.0",
     "@typescript-eslint/eslint-plugin": "^5.48.2",
     "@typescript-eslint/parser": "^5.48.2",
+    "esbuild": "^0.18.17",
     "eslint": "^8.32.0",
     "typescript": "^4.9.5",
     "vsce": "^2.15.0"
+  },
+  "dependencies": {
+    "vscode-languageclient": "^8.1.0"
   }
 }
