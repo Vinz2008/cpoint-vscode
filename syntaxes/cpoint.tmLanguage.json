@@ -38,7 +38,7 @@
 		"keywords": {
 			"patterns": [{
 				"name": "keyword.control.cpoint",
-				"match": "\\b(if|func|for|return|extern|var|goto|label|struct|while|loop|mod)\\b"
+				"match": "\\b(if|func|for|return|extern|var|goto|label|struct|while|loop|mod|enum|union)\\b"
 			}]
 		},
 		"imports": {
