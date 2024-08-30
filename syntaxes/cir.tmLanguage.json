@@ -1,0 +1,246 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "CIR",
+	"patterns": [
+		{
+			"include": "#function-headers"
+		},
+		{
+			"include": "#keywords"
+		},
+		{
+			"include": "#strings"
+		},
+		{
+			"include": "#decorators"
+		},
+		{
+			"include": "#numbers"
+		},
+		{
+			"include": "#comments"
+		},
+		{
+			"include": "#literals"
+		},
+		{
+			"include": "#punctuation"
+		},
+		{
+			"include": "#block-labels"
+		},
+		{
+			"include": "#types"
+		}
+	],
+	"repository": {
+		"function-headers": {
+			"begin": "(@\\w*)(\\()",
+			"end": "\\)",
+			"beginCaptures": {
+				"1": {
+					"name": "entity.name.function"
+				},
+				"2": {
+					"name": "punctuation.separator.parameters.begin.cir"
+				}
+			},
+			"endCaptures": {
+				"0": {
+					"name": "punctuation.separator.parameters.end.cir"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#punctuation"
+				},
+				{
+					"include": "#numbers"
+				},
+				{
+					"include": "#types"
+				},
+				{
+					"include": "#decorators"
+				}
+			]
+		},
+		"types": {
+			"patterns": [
+				{
+					"name": "entity.name.type.cir",
+					"match": "( *)((%)struct(\\.)\\w*)\\b"
+				},
+				{
+					"name": "storage.type.primitive.cir",
+					"match": "\\b(?<![%\\.])(i\\d+|ptr|void|half|bfloat|float|double|fp128|x86_fp80|ppc_fp128)\\b"
+				},
+				{
+					"name": "storage.type.vector.cir",
+					"begin": "<",
+					"end": ">"
+				},
+				{
+					"name": "storage.type.array.cir",
+					"match": "(\\[[0-9]+ +x +.+?\\]+)"
+				}
+			]
+		},
+		"literals": {
+			"patterns": [
+				{
+					"name": "constant.language.cir",
+					"match": "\\b(true|false|null)\\b"
+				},
+				{
+					"include": "#numbers"
+				}
+			]
+		},
+		"block-labels": {
+			"match": "(([a-zA-Z0-9.-]*:)(\n| ))",
+			"captures": {
+				"2": {
+					"name": "constant.language.symbol.cir"
+				},
+				"3": {
+					"name": "punctuation.separator.colon.cir"
+				}
+			}
+		},
+		"keywords": {
+			"patterns": [
+				{
+					"name": "keyword.control.flow.cir",
+					"match": "\\b(?<![%\\.])(return|call)\\b"
+				},
+				{
+					"name": "keyword.other.cir",
+					"match": "\\b(?<![%\\.])(var|call|return|const|load_global|load_arg|sizeof)\\b"
+				},
+				{
+					"name": "storage.type.function.cir",
+					"match": "\\b(func)\\b"
+				},
+				{
+					"name": "keyword.operator.assignment",
+					"match": "="
+				},
+				{
+					"begin": "\\b(goto)\\b",
+					"end": "\\n",
+					"beginCaptures": {
+						"0": {
+							"name": "keyword.control.flow.cir"
+						}
+					},
+					"patterns": [
+						{
+							"include": "#punctuation"
+						},
+						{
+							"include": "#types"
+						},
+						{
+							"include": "#decorators"
+						},
+						{
+							"match": "\\b(label +(%[a-zA-Z0-9.-]*))\\b",
+							"captures": {
+								"2": {
+									"name": "constant.language.symbol.cir"
+								}
+							}
+						}
+					]
+				}
+			]
+		},
+		"strings": {
+			"name": "string.quoted.double.cir",
+			"begin": "\"",
+			"end": "\""
+		},
+		"numbers": {
+			"patterns": [
+				{
+					"name": "constant.numeric.integer.cir",
+					"match": "\\b(?<![%!.#+])(\\d+)(?!\\.)\\b"
+				},
+				{
+					"name": "constant.numeric.float.cir",
+					"match": "\\b((\\d+)\\.(\\d+))\\b"
+				},
+				{
+					"name": "constant.numeric.hex.cir",
+					"match": "\\b(?<![%!#])(0(x|X)[0-9a-fA-F]+)\\b"
+				},
+				{
+					"name": "constant.numeric.hex.cir",
+					"match": "\\b((\\d+)\\.(\\d+)e\\+(\\d+))\\b"
+				}
+			]
+		},
+		"comments": {
+			"patterns": [
+				{
+					"name": "comment.cir",
+					"match": "//.*$"
+				}
+			]
+		},
+		"decorators": {
+			"patterns": [
+				{
+					"name": "entity.other.attribute-name",
+					"match": "((#|!)[a-zA-Z0-9.]+)\\b"
+				}
+			]
+		},
+		"punctuation": {
+			"patterns": [
+				{
+						"name": "punctuation.separator.colon.cir",
+						"match": ":"
+				},
+				{
+						"name": "punctuation.separator.element.cir",
+						"match": ","
+				},
+				{
+					"name": "punctuation.separator.parameters.begin.cir",
+					"match": "\\("
+				},
+				{
+					"name": "punctuation.separator.parameters.end.cir",
+					"match": "\\)"
+				},
+				{
+					"name": "punctuation.section.block.begin.bracket.curly.cir",
+					"match": "{"
+				},
+				{
+					"name": "punctuation.section.block.end.bracket.curly.cir",
+					"match": "}"
+				},
+				{
+					"name": "punctuation.definition.decorator.cir",
+					"match": "(\\*)"
+				},
+				{
+					"name": "string.interpolated.cir",
+					"match": "!(?=\")"
+				},
+				{
+					"name": "punctuation.section.block.begin.cir",
+					"match": "!(?={)"
+				},
+				{
+					"name": "punctuation.definition.destructure.cir",
+					"match": "\\.\\.\\."
+				}
+			]
+		}
+	},
+	"scopeName": "source.cir"
+}

@@ -2,7 +2,7 @@
   "name": "cpoint-vscode",
   "displayName": "cpoint-vscode",
   "description": "Cpoint support for vscode",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "publisher": "vincentbidarddelanoe",
   "engines": {
     "vscode": "^1.74.0"
@@ -37,6 +37,17 @@
           ".cpoint"
         ],
         "configuration": "./language-configuration.json"
+      },
+      {
+        "id": "cir",
+        "aliases": [
+          "CIR",
+          "cpoint-cir"
+        ],
+        "extensions": [
+          ".cir"
+        ],
+        "configuration": "./cir.language-configuration.json"
       }
     ],
     "grammars": [
@@ -44,6 +55,11 @@
         "language": "cpoint",
         "scopeName": "source.cpoint",
         "path": "./syntaxes/cpoint.tmLanguage.json"
+      },
+      {
+        "language": "cir",
+        "scopeName": "source.cir",
+        "path": "./syntaxes/cir.tmLanguage.json"
       }
     ]
   },
@@ -51,10 +67,11 @@
   "activationEvents": [
     "workspaceContains:*/build.toml",
     "workspaceContains:*/*.cpoint",
-    "onLanguage:cpoint"
+    "onLanguage:cpoint",
+    "onLanguage:cir"
 ],
   "scripts": {
-    "vscode:prepublish": "npm run esbuild-base -- --minify",
+    "vscode:prepublish": "node esbuild.js --production --minify",
     "esbuild-base": "esbuild ./client/src/extension.ts ./client/src/tasks.ts --bundle --external:vscode --format=cjs --platform=node --outdir=out",
     "esbuild": "npm run esbuild-base -- --sourcemap",
     "esbuild-watch": "npm run esbuild-base -- --sourcemap --watch",

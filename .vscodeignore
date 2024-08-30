@@ -1,8 +1,11 @@
-.vscode/**
-.vscode-test/**
+.vscode/
 .gitignore
 vsc-extension-quickstart.md
 **/*.ts
-**/tsconfig.json
+tsconfig.json
 test.cpoint
 **/*.md
+**/launch.json
+node_modules
+client/
+esbuild.js
